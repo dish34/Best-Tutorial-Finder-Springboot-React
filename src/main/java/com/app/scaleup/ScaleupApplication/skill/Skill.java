@@ -7,10 +7,14 @@ import javax.persistence.Id;
 @Entity
 public class Skill {
 
+	protected Skill() {
+
+	}
+
 	@Id
 	@GeneratedValue
 	private long id;
-	
+
 	private String name;
 
 	public Skill(long id, String name) {
@@ -34,6 +38,5 @@ public class Skill {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
 }
