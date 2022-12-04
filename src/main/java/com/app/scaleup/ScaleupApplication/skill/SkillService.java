@@ -22,6 +22,9 @@ public class SkillService {
 	
 	public Optional<Skill> findSkillById(Long id) {
 		Optional<Skill> skill = skillRepository.findById(id);
+		if (skill.isEmpty()) {
+			throw new SkillNotFoundException("User not present");
+		}
 		return skill;
 	}
 	
