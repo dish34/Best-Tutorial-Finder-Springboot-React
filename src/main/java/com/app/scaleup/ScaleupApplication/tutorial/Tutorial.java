@@ -1,8 +1,12 @@
 package com.app.scaleup.ScaleupApplication.tutorial;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.app.scaleup.ScaleupApplication.skill.Skill;
 
 @Entity
 public class Tutorial {
@@ -20,7 +24,10 @@ public class Tutorial {
 	private String provider;
 	private boolean paid;
 	private Long upvotes;
-
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	private Skill skill;
+	
 	public Long getId() {
 		return id;
 	}
@@ -75,6 +82,14 @@ public class Tutorial {
 
 	public void setUpvotes(Long upvotes) {
 		this.upvotes = upvotes;
+	}
+
+	public Skill getSkill() {
+		return skill;
+	}
+
+	public void setSkill(Skill skill) {
+		this.skill = skill;
 	}
 
 }
