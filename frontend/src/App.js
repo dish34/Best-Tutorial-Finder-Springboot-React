@@ -7,19 +7,22 @@ import {
   Switch,
   Route,
   Redirect,
+  useParams
 } from "react-router-dom";
 import Skills from "./components/Skills";
+import Tutorials from "./components/Tutorials";
+
 
 function App() {
+
   return (
-    <>
-    <Router>
+    <Router forceRefresh={true}>
       <Switch>
-      <Route exact path="/" component={Skills} />
-      <Redirect to="/" />
+        <Route exact path="/" component={Skills} />
+        <Route path="/tutorials/:id" render={({ match }) => <Tutorials match={match} />} />
+        <Redirect to="/" />
       </Switch>
     </Router>
-    </>
   )
 
 }

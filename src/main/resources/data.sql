@@ -30,3 +30,6 @@ values (10, 'AZURE');
 
 insert into Skill(id, name)
 values (11, 'AWS');
+
+insert into tutorial(id, name, description, url, provider, paid, upvotes, skill_id)
+values (1, 'Java Programming for Complete Beginners', 'Java Programming for Beginners to Java Object Oriented Programming. Core Java + REST API with Spring Boot. Java 8 to 16.', 'https://www.udemy.com/course/java-programming-tutorial-for-beginners/', 'Udemy', true, 0, 1);

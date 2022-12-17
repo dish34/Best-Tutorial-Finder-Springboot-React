@@ -1,5 +1,13 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+  Link
+} from "react-router-dom";
+import Tutorials from "./Tutorials";
 
 function Skills() {
   const [error, setError] = useState(null);
@@ -29,22 +37,31 @@ function Skills() {
   } else {
     return (
       <div>
-      <div class="container my-5">
-      <div class="input-group">
-        <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        <button type="button" class="btn btn-outline-primary">search</button>
+      <div className="container my-5">
+      <div className="input-group">
+        <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+        <button type="button" className="btn btn-outline-primary">search</button>
       </div>
       </div>
-        <div class="container-fluid">
-          <div class="row">
+    
+        <div className="container-fluid">
+        {/* <Router> */}
+          <div className="row">
           {skills.map(skill => (
-            <div key={skill.id} class="col-4">
-              <div class="card h-120 border border-primary my-2">
-                <div class="card-body text-center"> {skill.name} </div> 
-              </div>
+            <div key={skill.id} className="col-4">
+                
+                  <div className="card h-120 border border-primary my-2">
+                  <Link to={`/tutorials/${skill.name}`}> <div className="card-body text-center"> {skill.name} </div>  </Link>
+                  </div>
+               
             </div>
+            
           ))}
+          {/* <Switch>
+          <Route path="tutorials/:id" component={Tutorials} />
+          </Switch> */}
           </div>
+          {/* </Router> */}
         </div>
       </div>
     );
