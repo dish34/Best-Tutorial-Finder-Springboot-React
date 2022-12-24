@@ -3,6 +3,8 @@ package com.app.scaleup.ScaleupApplication.tutorial;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -44,7 +46,7 @@ public class TutorialController {
 	}
 	
 	@PostMapping("/tutorials")
-	public void postSkill(@RequestBody Tutorial tutorial) {
+	public void postSkill(@Valid @RequestBody Tutorial tutorial) {
 		tutorialService.createTutorial(tutorial);
 	}
 

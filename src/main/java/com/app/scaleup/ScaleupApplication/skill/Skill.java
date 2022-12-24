@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.app.scaleup.ScaleupApplication.tutorial.Tutorial;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -21,6 +23,8 @@ public class Skill {
 	@GeneratedValue
 	private long id;
 
+	@NotEmpty(message = "Skill Name is required")
+	@Size(min=2, max=100, message="Length of characters can be between from 2 to 100.")
 	private String name;
 
 	@JsonIgnore

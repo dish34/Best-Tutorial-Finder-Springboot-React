@@ -51,7 +51,7 @@ function Tutorials ({ match }) {
                     <div class="card h-120 border border-primary my-2">
                       <div class="card-body"> 
                       <h5 class="card-title">{tutorial.name} </h5>
-                      <p class="card-text">{tutorial.description}</p>
+                      <p class="card-text">{tutorial.provider}</p>
                       </div> 
                       <div class="card-body">
                             <a target="_blank" href={tutorial.url} class="card-link">Card link</a>
