@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import SubmitTutorial from './SumitTutorial';
 
 const myComponentStyle = {
     width: '18rem'
@@ -42,6 +43,7 @@ function Tutorials ({ match }) {
         <div class="input-group">
           <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
           <button type="button" class="btn btn-outline-primary">search</button>
+          <SubmitTutorial></SubmitTutorial>
         </div>
         </div>
           <div class="container-fluid">
