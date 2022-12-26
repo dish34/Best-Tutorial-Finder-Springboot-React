@@ -29,18 +29,18 @@ public class Tutorial {
 	private String name;
 	
 	@NotEmpty(message = "Url is required")
-	@Pattern(regexp = "https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,})", message = "Url should be valid")
+	@Pattern(regexp = "https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,}", message = "Url should be valid")
 	private String url;
 	
 	@NotEmpty(message = "Tutorial Provider is required")
 	@Size(min=2, max=100, message="The length of full name must be between 2 and 100 characters.")
 	private String provider;
 	
-	@NotEmpty(message ="Tuorial is paid is required")
+	@NotNull(message ="Tuorial is paid is required")
 	private boolean paid;
 	
-	@NotEmpty(message ="Tuorial upvotes is required")
-	private Long upvotes;
+	@NotNull(message ="Tutorial upvotes is required")
+	private Long upvotes = 0l;
 	
 	@Valid
 	@NotNull
@@ -76,7 +76,7 @@ public class Tutorial {
 	}
 
 	public void setProvider(String provider) {
-		provider = provider;
+		this.provider = provider;
 	}
 
 	public boolean isPaid() {

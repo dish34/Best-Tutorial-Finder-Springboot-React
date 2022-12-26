@@ -20,7 +20,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Skills} />
         <Route path="/tutorials/:id" render={({ match }) => <Tutorials match={match} />} />
-        <Redirect to="/" />
+        <Redirect to="/" component={Skills} />
       </Switch>
     </Router>
   )

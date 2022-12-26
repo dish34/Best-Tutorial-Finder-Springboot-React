@@ -1,0 +1,42 @@
+#add-tutorial {
+    animation-name: visible;
+    animation-duration: 4s;
+}
+
+#no-tutorial-container {
+
+}
+.no-tutorial {
+    animation-name: wave;
+    animation-duration: 4s;
+}
+.card-paid {
+    border: 1px solid rgb(0, 174, 255);
+    height: auto;
+    width: auto;
+    background-color: rgb(163, 228, 245);
+    margin-left: 5px;
+}
+
+.tutorial-container > a {
+    text-decoration: none!important;
+    color: black!important;
+}
+
+#submit-tutorial {
+
+}
+
+@keyframes wave {
+    from {font-size:0%}
+    to {font-size: 100%}
+  }
+
+@keyframes visible {
+  from {
+    opacity: 0;
+  }
+  to {
+   opacity: 0.5;
+  }
+}

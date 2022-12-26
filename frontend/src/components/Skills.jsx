@@ -8,12 +8,12 @@ import {
   Link
 } from "react-router-dom";
 import Tutorials from "./Tutorials";
+import './css/skills.css';
 
 function Skills() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [skills, setSkills] = useState([]);
-
 
   useEffect(() => {
     fetch("http://localhost:8080/skills")
@@ -48,7 +48,7 @@ function Skills() {
         {/* <Router> */}
           <div className="row">
           {skills.map(skill => (
-            <div key={skill.id} className="col-4">
+            <div key={skill.id} className="col-4 skill-container">
                 
                   <div className="card h-120 border border-primary my-2">
                   <Link to={`/tutorials/${skill.name}`}> <div className="card-body text-center"> {skill.name} </div>  </Link>
