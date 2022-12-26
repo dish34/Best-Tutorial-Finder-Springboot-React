@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import com.app.scaleup.ScaleupApplication.tutorial.Tutorial;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -19,25 +21,27 @@ public class Skill {
 
 	@Id
 	@GeneratedValue
-	private long id;
+	private Long id;
 
+	@NotEmpty(message = "Skill Name is required")
+	@Size(min=2, max=100, message="Length of characters can be between from 2 to 100.")
 	private String name;
 
 	@JsonIgnore
 	@OneToMany(mappedBy="skill")
 	private List<Tutorial> tutorial;
 	
-	public Skill(long id, String name) {
+	public Skill(Long id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
 	}
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

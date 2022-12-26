@@ -5,6 +5,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.app.scaleup.ScaleupApplication.skill.Skill;
 
@@ -18,13 +23,27 @@ public class Tutorial {
 	@Id
 	@GeneratedValue
 	private Long id;
-	private String name;
-	private String description;
-	private String url;
-	private String provider;
-	private boolean paid;
-	private Long upvotes;
 	
+	@NotEmpty(message = "Name is required")
+	@Size(min=2, max=100, message = "The length of full name must be between 2 and 100 characters.")
+	private String name;
+	
+	@NotEmpty(message = "Url is required")
+	@Pattern(regexp = "https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|www\\.[a-zA-Z0-9][a-zA-Z0-9-]+[a-zA-Z0-9]\\.[^\\s]{2,}|https?:\\/\\/(?:www\\.|(?!www))[a-zA-Z0-9]+\\.[^\\s]{2,}|www\\.[a-zA-Z0-9]+\\.[^\\s]{2,}", message = "Url should be valid")
+	private String url;
+	
+	@NotEmpty(message = "Tutorial Provider is required")
+	@Size(min=2, max=100, message="The length of full name must be between 2 and 100 characters.")
+	private String provider;
+	
+	@NotNull(message ="Tuorial is paid is required")
+	private boolean paid;
+	
+	@NotNull(message ="Tutorial upvotes is required")
+	private Long upvotes = 0l;
+	
+	@Valid
+	@NotNull
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Skill skill;
 	
@@ -44,14 +63,6 @@ public class Tutorial {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public String getUrl() {
 		return url;
 	}
@@ -65,7 +76,7 @@ public class Tutorial {
 	}
 
 	public void setProvider(String provider) {
-		provider = provider;
+		this.provider = provider;
 	}
 
 	public boolean isPaid() {
