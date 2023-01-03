@@ -1,4 +1,4 @@
-# SkillScaleUp
+# Best Tutorial Finder (created with Springboot and React)
 Find the best tutorials for various technologies.
 
 ## Demo
