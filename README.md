@@ -48,6 +48,18 @@ Start the server
   npm start
 ```
 
+open the browser with
+http://localhost:3000/
+
+## Screenshots
+![App Screenshot](https://github.com/dish34/SkillScaleUp/blob/dev/gif/SkillScaleupSkills.JPG)
+---
+![App Screenshot](https://github.com/dish34/SkillScaleUp/blob/dev/gif/SkillScaleupNoTutorialFound.JPG)
+---
+![App Screenshot](https://github.com/dish34/SkillScaleUp/blob/dev/gif/SkillScaleupTutorials.JPG)
+---
+![App Screenshot](https://github.com/dish34/SkillScaleUp/blob/dev/gif/SkillScaleupSubmitTutorials.JPG)
+---
 
 ## Roadmap
 - Securing Api
