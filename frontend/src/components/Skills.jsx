@@ -50,8 +50,18 @@ function Skills() {
           {skills.map(skill => (
             <div key={skill.id} className="col-4 skill-container">
                 
-                  <div className="card h-120 border border-primary my-2">
-                  <Link to={`/tutorials/${skill.name}`}> <div className="card-body text-center"> {skill.name} </div>  </Link>
+                  <div className="card border my-2 skill-img">
+                  <Link to={`/tutorials/${skill.name}`}>
+                    <div className='d-flex flex-wrap'>
+                      {/* <img height="50px" width="50px" src="../images/JAVA.png" alt="" />  */}
+                      <div className='m-2 skill-img-container'>
+                        <img height="50px" width="50px" src={`../images/${skill.name}.png`} alt="" /> 
+                      </div>
+                      <div className='m-2'>
+                        <span className=""> {skill.name} </span>  
+                      </div>
+                    </div>
+                  </Link>
                   </div>
                
             </div>
