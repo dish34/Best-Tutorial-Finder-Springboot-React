@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import SubmitTutorial from './SumitTutorial';
 import './css/tutorials.css';
@@ -12,16 +11,17 @@ const myComponentStyle = {
 function Tutorials ({ match }) {
     const [error, setError] = useState(null);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [tutorials, settutorials] = useState([]);
+    const [tutorials, setTutorials] = useState([]);
     const {id} = match.params;
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
     useEffect(() => {
-      fetch(`http://localhost:8080/tutorials/${id}`)
+      fetch(`${API_BASE_URL}/api/tutorials/${id}`)
         .then(res => res.json())
         .then(
           (result) => {
             setIsLoaded(true);
-            settutorials(result);
+            setTutorials(result);
           },
           (error) => {
             setIsLoaded(true);
@@ -38,10 +38,10 @@ function Tutorials ({ match }) {
     else if(tutorials.length === 0) {
       return (
         <div>
-          <div class="container my-5">
-            <div class="input-group">
+          <div className="container my-5">
+            <div className="input-group">
              <h2 id="no-tutorial-container">
-             <span>OOPS!</span> <span className='path' fill="white" stroke="black" stroke-width="4" >No Tutorials Found!...  </span><span className="no-tutorial">😓</span>
+             <span>OOPS!</span> <span classNameName='path' fill="white" stroke="black" stroke-width="4" >No Tutorials Found!...  </span><span classNameName="no-tutorial">😓</span>
              </h2>
              <h5 id="add-tutorial">
              <SubmitTutorial tutorialId={id}></SubmitTutorial>
@@ -57,29 +57,29 @@ function Tutorials ({ match }) {
      else {
       return (
         <div>
-        <div class="container my-5">
-        <div class="input-group">
-          <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-          <button type="button" class="btn btn-outline-primary">search</button>
+        <div className="container my-5">
+        <div className="input-group">
+          <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
+          <button type="button" className="btn btn-outline-primary">search</button>
           <SubmitTutorial tutorialId={id}></SubmitTutorial>
         </div>
         </div>
-          <div class="container-fluid">
-            <div class="row">
+          <div className="container-fluid">
+            <div className="row">
             {tutorials.map(tutorial => (
-              <div key={tutorial.id} class="col-5 my-2 tutorial-container">
+              <div key={tutorial.id} className="col-5 my-2 tutorial-container">
                 <a target="_blank" href={tutorial.url}>
-                    <div class="card h-100 border border-primary my-2">
-                      <div class="card-body"> 
-                      <h5 class="card-title">{tutorial.name} </h5>
+                    <div className="card h-100 border border-primary my-2">
+                      <div className="card-body"> 
+                      <h5 className="card-title">{tutorial.name} </h5>
                       <div>
-                        <span class="card-text card-paid">{tutorial.provider}</span>
-                        <span class="card-text card-paid">{tutorial.paid? <>Paid</>:<>Free</>}</span>
+                        <span className="card-text card-paid">{tutorial.provider}</span>
+                        <span className="card-text card-paid">{tutorial.paid? <>Paid</>:<>Free</>}</span>
                       </div>
                       
                       </div> 
-                      <div class="card-body">
-                            <a target="_blank" href={tutorial.url} class="card-link">tutorial link</a>
+                      <div className="card-body">
+                            <div target="_blank" href={tutorial.url} className="card-link">tutorial link</div>
                        </div>
                     </div>
                     </a>

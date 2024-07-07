@@ -21,22 +21,22 @@ public class SkillController {
 	@Autowired
 	private SkillService skillService;
 	
-	@GetMapping("/skills")
+	@GetMapping("/api/skills")
 	public List<Skill> getAllSkills() {
 		return skillService.retreiveAllSkills();
 	}
 	
-	@GetMapping("/skills/{id}")
+	@GetMapping("/api/skills/{id}")
 	public Optional<Skill> getSkillById(@PathVariable Long id) {
 		return skillService.findSkillById(id);
 	}
 	
-	@PostMapping("/skills")
+	@PostMapping("/api/skills")
 	public void postSkill(@RequestBody Skill skill) {
 		skillService.createSkill(skill);
 	}
 	
-	@DeleteMapping("/skiills/{id}")
+	@DeleteMapping("/api/skills/{id}")
 	public void deleteSkillById(@PathVariable Long id) {
 		skillService.deleteSkillById(id);
 	}
