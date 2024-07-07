@@ -14,9 +14,10 @@ function Skills() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [skills, setSkills] = useState([]);
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
-    fetch("http://localhost:8080/skills")
+    fetch(`${API_BASE_URL}/api/skills`)
       .then(res => res.json())
       .then(
         (result) => {
@@ -51,7 +52,7 @@ function Skills() {
             <div key={skill.id} className="col-4 skill-container">
                 
                   <div className="card border my-2 skill-img">
-                  <Link to={`/tutorials/${skill.name}`}>
+                  <a href={`/tutorials/${skill.name}`}>
                     <div className='d-flex flex-wrap'>
                       {/* <img height="50px" width="50px" src="../images/JAVA.png" alt="" />  */}
                       <div className='m-2 skill-img-container'>
@@ -61,7 +62,7 @@ function Skills() {
                         <span className=""> {skill.name} </span>  
                       </div>
                     </div>
-                  </Link>
+                  </a>
                   </div>
                
             </div>

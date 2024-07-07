@@ -16,7 +16,7 @@ import Tutorials from "./components/Tutorials";
 function App() {
 
   return (
-    <Router forceRefresh={true}>
+    <Router>
       <Switch>
         <Route exact path="/" component={Skills} />
         <Route path="/tutorials/:id" render={({ match }) => <Tutorials match={match} />} />

@@ -23,29 +23,29 @@ public class TutorialController {
 	@Autowired
 	private TutorialService tutorialService;
 	
-//	@GetMapping("/tutorials")
+//	@GetMapping("/api/tutorials")
 //	public List<Tutorial> getAllTutorials() {
 //		return tutorialService.retreiveAllTutorials();
 //	}
 	
-//	@GetMapping("/tutorials/{tutorialId}")
+//	@GetMapping("/api/tutorials/{tutorialId}")
 //	public Optional<Tutorial> getSkillById(@PathVariable Long tutorialId) {
 //		return tutorialService.findTutorialById(tutorialId);
 //	}
 	
-	@GetMapping("/tutorials/{skillName}")
+	@GetMapping("/api/tutorials/{skillName}")
 	public List<Tutorial> getTutorialsBySkillName(@PathVariable String skillName)
 	{
 		return tutorialService.findTutorialBySkillName(skillName);
 	}
 	
-	@PostMapping("/tutorials/{skillName}")
+	@PostMapping("/api/tutorials/{skillName}")
 	public void postTutorialBySkillName(@PathVariable String skillName, @RequestBody Tutorial tutorial)
 	{
 		tutorialService.createTutorialBySkillName(skillName, tutorial);
 	}
 	
-	@PostMapping("/tutorials")
+	@PostMapping("/api/tutorials")
 	public void postSkill(@Valid @RequestBody Tutorial tutorial) {
 		tutorialService.createTutorial(tutorial);
 	}
