@@ -1,24 +1,26 @@
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState } from "react";
+import { useEffect } from "react";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Redirect,
-  Link
+  Link,
 } from "react-router-dom";
+import { useMemo } from "react";
 import Tutorials from "./Tutorials";
-import './css/skills.css';
+import "./css/skills.css";
 
 function Skills() {
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [skills, setSkills] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   useEffect(() => {
     fetch(`${API_BASE_URL}/api/skills`)
-      .then(res => res.json())
+      .then((res) => res.json())
       .then(
         (result) => {
           setIsLoaded(true);
@@ -28,8 +30,17 @@ function Skills() {
           setIsLoaded(true);
           setError(error);
         }
-      )
-  }, [])
+      );
+  }, []);
+  const filteredSearchQuery = useMemo(() => {
+    if (searchQuery.length === 0) {
+      return skills;
+    }
+    const query = searchQuery.toLowerCase();
+    return skills.filter((skill) =>
+      skill.name.toLowerCase().includes(query)
+    );
+  }, [skills, searchQuery]);
 
   if (error) {
     return <div>Error: {error.message}</div>;
@@ -38,46 +49,52 @@ function Skills() {
   } else {
     return (
       <div>
-      <div className="container my-5">
-      <div className="input-group">
-        <input type="search" className="form-control rounded" placeholder="Search" aria-label="Search" aria-describedby="search-addon" />
-        <button type="button" className="btn btn-outline-primary">search</button>
-      </div>
-      </div>
-    
+        <div className="container my-5">
+          <div className="input-group">
+            <input
+              type="search"
+              className="form-control rounded"
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="search-addon"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+            <button type="button" className="btn btn-outline-primary">
+              search
+            </button>
+          </div>
+        </div>
+
         <div className="container-fluid">
-        {/* <Router> */}
           <div className="row">
-          {skills.map(skill => (
-            <div key={skill.id} className="col-4 skill-container">
-                
-                  <div className="card border my-2 skill-img">
+            {filteredSearchQuery.map((skill) => (
+              <div key={skill.id} className="col-4 skill-container">
+                <div className="card border my-2 skill-img">
                   <a href={`/tutorials/${skill.name}`}>
-                    <div className='d-flex flex-wrap'>
+                    <div className="d-flex flex-wrap">
                       {/* <img height="50px" width="50px" src="../images/JAVA.png" alt="" />  */}
-                      <div className='m-2 skill-img-container'>
-                        <img height="50px" width="50px" src={`../images/${skill.name}.png`} alt="" /> 
+                      <div className="m-2 skill-img-container">
+                        <img
+                          height="50px"
+                          width="50px"
+                          src={`../images/${skill.name}.png`}
+                          alt=""
+                        />
                       </div>
-                      <div className='m-2'>
-                        <span className=""> {skill.name} </span>  
+                      <div className="m-2">
+                        <span className=""> {skill.name} </span>
                       </div>
                     </div>
                   </a>
-                  </div>
-               
-            </div>
-            
-          ))}
-          {/* <Switch>
-          <Route path="tutorials/:id" component={Tutorials} />
-          </Switch> */}
+                </div>
+              </div>
+            ))}
           </div>
-          {/* </Router> */}
         </div>
       </div>
     );
   }
-
 }
 
 export default Skills;
