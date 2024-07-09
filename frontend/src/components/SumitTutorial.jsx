@@ -21,7 +21,7 @@ function SubmitTutorial({tutorialId}) {
         formdata[key] = value;
     }
 
-    fetch(`http://localhost:8080/tutorials/${tutorialId}`, {
+    fetch(`http://localhost:8080/api/tutorials/${tutorialId}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

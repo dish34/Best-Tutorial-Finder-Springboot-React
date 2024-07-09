@@ -54,22 +54,19 @@ function Skills() {
             <input
               type="search"
               className="form-control rounded"
-              placeholder="Search"
+              placeholder="Search "
               aria-label="Search"
               aria-describedby="search-addon"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            <button type="button" className="btn btn-outline-primary">
-              search
-            </button>
           </div>
         </div>
 
         <div className="container-fluid">
           <div className="row">
             {filteredSearchQuery.map((skill) => (
-              <div key={skill.id} className="col-4 skill-container">
+              <div key={skill.id} className="col-6 col-md-4 skill-container">
                 <div className="card border my-2 skill-img">
                   <a href={`/tutorials/${skill.name}`}>
                     <div className="d-flex flex-wrap">
