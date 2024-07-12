@@ -42,6 +42,10 @@ function Skills() {
     );
   }, [skills, searchQuery]);
 
+  const formatSkillName = (name) => {
+    return name.replace(/\s+/g, '_').toUpperCase();
+  };
+
   if (error) {
     return <div>Error: {error.message}</div>;
   } else if (!isLoaded) {
@@ -49,6 +53,14 @@ function Skills() {
   } else {
     return (
       <div>
+        <div className="container">
+          <div className="row">
+            <div className="col col-md-5">
+            <span className="fs-2 text-capitalize text-center text-md-left font-weight-bold text-secondary">Find the Best </span>
+            <span className="fs-2 text-capitalize text-md-left font-weight-bold text-info">Tutorial</span>
+            </div>
+          </div>
+        </div>
         <div className="container my-5">
           <div className="input-group">
             <input
@@ -68,14 +80,14 @@ function Skills() {
             {filteredSearchQuery.map((skill) => (
               <div key={skill.id} className="col-6 col-md-4 skill-container">
                 <div className="card border my-2 skill-img">
-                  <a href={`/tutorials/${skill.name}`}>
+                  <a href={`/tutorials/${formatSkillName(skill.name)}`}>
                     <div className="d-flex flex-wrap">
                       {/* <img height="50px" width="50px" src="../images/JAVA.png" alt="" />  */}
                       <div className="m-2 skill-img-container">
                         <img
                           height="50px"
                           width="50px"
-                          src={`../images/${skill.name}.png`}
+                          src={`../images/${formatSkillName(skill.name)}.png`}
                           alt=""
                         />
                       </div>
