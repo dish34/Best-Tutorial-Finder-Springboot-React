@@ -4,11 +4,11 @@ import { Modal, Button, Form } from 'react-bootstrap';
 function SubmitTutorial({tutorialId}) {
   const [show, setShow] = useState(false);
   const [isPaid, setPaid] = useState(false);
-
+ 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handlePaid = () => setPaid(!isPaid);
-  
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
   const handleSubmit = (event) => {
 

@@ -43,6 +43,8 @@ function Skills() {
   }, [skills, searchQuery]);
 
   const formatSkillName = (name) => {
+    if (name === 'C#')
+      return 'CSHARP';
     return name.replace(/\s+/g, '_').toUpperCase();
   };
 
@@ -55,9 +57,9 @@ function Skills() {
       <div>
         <div className="container">
           <div className="row">
-            <div className="col col-md-5">
+            <div className="col col-md-9">
             <span className="fs-2 text-capitalize text-center text-md-left font-weight-bold text-secondary">Find the Best </span>
-            <span className="fs-2 text-capitalize text-md-left font-weight-bold text-info">Tutorial</span>
+            <span className="fs-2 text-capitalize text-md-left font-weight-bold text-info">Programming Tutorial</span>
             </div>
           </div>
         </div>

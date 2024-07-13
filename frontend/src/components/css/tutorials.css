@@ -1,42 +1,69 @@
 #add-tutorial {
-    animation-name: visible;
-    animation-duration: 4s;
+  animation-name: visible;
+  animation-duration: 4s;
 }
 
 #no-tutorial-container {
-
 }
 .no-tutorial {
-    animation-name: wave;
-    animation-duration: 4s;
+  animation-name: wave;
+  animation-duration: 4s;
 }
 .card-paid {
-    border: 1px solid rgb(0, 174, 255);
-    height: auto;
-    width: auto;
-    background-color: rgb(163, 228, 245);
-    margin-left: 5px;
+  border: 1px solid rgb(0, 174, 255);
+  height: auto;
+  width: auto;
+  background-color: rgb(163, 228, 245);
+  margin-left: 10px;
 }
 
 .tutorial-container > a {
-    text-decoration: none!important;
-    color: black!important;
+  text-decoration: none !important;
+  color: black !important;
 }
 
 #submit-tutorial {
+}
 
+.filter {
+  display: block;
+  position: sticky;
+  top: 0;
+  height: 900px;
+  width: 150px;
+  border-right: 1px solid black;
+}
+.filter-by {
+  height: 50px;
+  width: 150px;
+  text-align: center;
+  margin-top: 15px;
+  padding-top: 10px;
+  border: 1px solid rgb(216 224 237);
+  margin: 0 auto;
+}
+.filter-type {
+  padding: 15px;
+  margin: 0 auto;
+}
+.card-color {
+  border-color: rgb(216 224 237);
 }
 
 @keyframes wave {
-    from {font-size:0%}
-    to {font-size: 100%}
+  from {
+    font-size: 0%;
   }
+  to {
+    font-size: 100%;
+  }
+}
 
 @keyframes visible {
   from {
     opacity: 0;
   }
   to {
-   opacity: 0.5;
+    opacity: 0.5;
   }
 }
