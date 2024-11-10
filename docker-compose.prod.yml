@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .  # Root directory of your project
+      dockerfile: Dockerfile  # Use the main Dockerfile
+      args:
+        - REACT_APP_ENV=production  # Default to production
+    image: tutorial_finder:prodv1
+    ports:
+      - "8080:8080"  # Expose port 8080 for both frontend and backend
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
